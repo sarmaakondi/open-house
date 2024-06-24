@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/img/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Edit <%= listing.name %></title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1 id="title">Edit Listing</h1>
+    <form action="/listings/<%= listing._id %>?_method=PUT" method="post">
+      <form>
+        <div class="form-field">
+          <label for="street-address">Street Address:</label>
+          <small>required</small>
+          <input
+            type="text"
+            name="streetAddress"
+            id="street-address"
+            required
+            value="<%= listing.streetAddress %>"
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="city">City:</label>
+          <small>required</small>
+          <input
+            type="text"
+            name="city"
+            id="city"
+            required
+            value="<%= listing.city %>"
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="price">Price:</label>
+          <small>optional</small>
+          <input
+            type="number"
+            name="price"
+            id="price"
+            min="0"
+            value="<%= listing.price %>"
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="size">Size:</label>
+          <small>optional</small>
+          <input
+            type="number"
+            name="size"
+            id="size"
+            min="0"
+            value="<%= listing.size %>"
+          />
+        </div>
+
+        <button class="button" type="submit">Update</button>
+      </form>
+    </form>
+  </body>
+</html>

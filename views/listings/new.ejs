@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/img/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Add Listing</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1 id="title">Add New Listing</h1>
+    <form action="/listings" method="post">
+      <form>
+        <div class="form-field">
+          <label for="street-address">Street Address:</label>
+          <small>required</small>
+          <input
+            type="text"
+            name="streetAddress"
+            id="street-address"
+            required
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="city">City:</label>
+          <small>required</small>
+          <input type="text" name="city" id="city" required />
+        </div>
+
+        <div class="form-field">
+          <label for="price">Price:</label>
+          <small>optional</small>
+          <input type="number" name="price" id="price" min="0" />
+        </div>
+
+        <div class="form-field">
+          <label for="size">Size:</label>
+          <small>optional</small>
+          <input type="number" name="size" id="size" min="0" />
+        </div>
+
+        <button class="button" type="submit">Add Listing</button>
+      </form>
+    </form>
+  </body>
+</html>

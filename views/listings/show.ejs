@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="icon" href="/img/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title><%= listing.name %></title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1 id="title">A listing in <%= listing.city %></h1>
+
+    <div>
+      <div class="details">
+        <h2>Details</h2>
+        <p>House Size: <%= listing.size %> square feet</p>
+        <p>
+          Price: $<%= new Intl.NumberFormat("en-US").format(listing.price) %>
+        </p>
+        <p>Street Address: <%= listing.streetAddress %></p>
+      </div>
+
+      <div class="owner">
+        <h2>Owner:</h2>
+        <% if (listing.owner._id.equals(user._id)) { %>
+        <p>You own this!</p>
+        <a id="edit-listing" href="/listings/<%= listing._id %>/edit"
+          ><i class="fa-solid fa-pen-to-square"></i
+        ></a>
+        <form
+          action="/listings/<%= listing._id %>?_method=DELETE"
+          method="post"
+        >
+          <button id="delete-button" type="submit">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </form>
+        <% } else { %>
+        <p>
+          <%= listing.owner.username[0].toUpperCase() +
+          listing.owner.username.slice(1) %>
+        </p>
+        <% } %>
+      </div>
+
+      <div class="favorites">
+        <div class="favorite-nav">
+          <h2>Favorites</h2>
+          <% if (!userHasFavorited) { %>
+          <form
+            action="/listings/<%= listing._id %>/favorited-by/<%= user._id %>"
+            method="post"
+          >
+            <button id="fav-button" type="submit">
+              <i class="fa-solid fa-heart-circle-plus"></i>
+            </button>
+          </form>
+          <% } else { %>
+          <form
+            action="/listings/<%= listing._id %>/favorited-by/<%= user._id %>?_method=DELETE"
+            method="post"
+          >
+            <button id="unfav-button" type="submit">
+              <i class="fa-solid fa-heart-circle-minus"></i>
+            </button>
+          </form>
+          <% } %>
+        </div>
+        <p>Favorited by <%= listing.favoritedByUsers.length %> people.</p>
+        <% if (userHasFavorited) { %>
+        <p>You've favorited this listing!</p>
+        <% } else { %>
+        <p>You haven't favorited this listing.</p>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>

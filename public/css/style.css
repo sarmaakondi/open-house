@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+.parent {
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 48px 32px;
+}
+
+#title {
+  margin: 16px;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: hsl(39, 90%, 30%);
+  padding: 8px;
+  transition: transform 0.3s;
+  outline: none;
+}
+
+a:hover,
+a:active {
+  transform: scale(1.15);
+}
+
+#background-image {
+  max-width: 500px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+  margin-bottom: 12px;
+}
+
+.form-field input {
+  min-height: 30px;
+  outline: none;
+  padding: 4px;
+  font-family: inherit;
+}
+
+.form-field small {
+  margin: 4px 0 8px 0;
+}
+
+.button {
+  min-width: 200px;
+  min-height: 30px;
+  font-family: inherit;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-top: 12px;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  background-color: hsl(39, 90%, 30%);
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+.nav-header {
+  display: flex;
+  align-items: center;
+}
+
+.listings ul {
+  display: flex;
+  min-width: 400px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.listings li {
+  list-style: none;
+  padding: 4px;
+}
+
+.listings li::before {
+  content: "🏠";
+}
+
+.list-items {
+  min-width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.details {
+  margin-bottom: 16px;
+}
+
+.details h2,
+.favorites h2 {
+  margin-bottom: 8px;
+}
+
+.details p,
+.favorites p {
+  line-height: 24px;
+}
+
+.owner {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.owner h2 {
+  margin-right: 8px;
+}
+
+.owner p {
+  font-size: 18px;
+}
+
+#delete-button {
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 16px;
+  margin-left: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: rgba(255, 0, 0, 0.8);
+}
+
+#delete-button:hover {
+  transform: scale(1.15);
+}
+
+#edit-listing {
+  margin-left: 16px;
+}
+
+.favorite-nav {
+  display: flex;
+  align-items: center;
+}
+
+#fav-button,
+#unfav-button {
+  margin: 0 0 8px 24px;
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 20px;
+  color: palevioletred;
+}
+
+#fav-button:hover,
+#unfav-button:hover {
+  transform: scale(1.1);
+  font-weight: bold;
+}
+
+#unfav-button {
+  color: gray;
+}

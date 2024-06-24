@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/img/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>All Listings</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <div class="nav-header">
+      <h1 id="title">Here's all the Listings</h1>
+      <a href="/listings/new">Add New Listing</a>
+    </div>
+    <ul class="listings">
+      <% listings.forEach(listing => { %>
+      <div class="list-items">
+        <li>
+          A listing in <%= listing.city[0].toUpperCase() + listing.city.slice(1)
+          %> owned by <%= listing.owner.username[0].toUpperCase() +
+          listing.owner.username.slice(1) %>
+        </li>
+        <a href="/listings/<%= listing._id %>">View</a>
+      </div>
+      <% }) %>
+    </ul>
+  </body>
+</html>
